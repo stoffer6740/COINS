@@ -1,21 +1,46 @@
-angular.module('starter.controllers', [])
+angular.module('coins.controllers', [])
 
 .controller('LineCtrl', function($scope, TabFactory) {
       $scope.submit = function () {
-        $scope.hidden = TabFactory.setState(true);
-        console.log('test');
-      }
+
+      };
+
+      $scope.endStation = ['Esbjerg st', 'Skolegade', 'Spangsbjerg Kirkevej'];
     })
 
 .controller('TabCtrl', function ($scope, TabFactory) {
       $scope.hidden = TabFactory.getState();
     })
 
-.controller('ChatsCtrl', function($scope, Chats) {
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
-  }
+.controller('TicketCtrl', function($scope, $ionicModal) {
+    $scope.ticketinspection = {
+        passName: '',
+        passAddress: '',
+        passZip: '',
+        passCity: '',
+        passID: ['Social security card', 'Drivers license', 'Other form of ID'],
+        passCPR: '',
+        aSeasonPass: false,
+        bNoValidTicket: false,
+        cNoCheckIn: false,
+        passPhone: '',
+        passEmail: '',
+        passComments: ''
+    };
+
+        $ionicModal.fromTemplateUrl('templates/modal/ticket-modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.modal = modal;
+        });
+        $scope.openModal = function() {
+            $scope.modal.show();
+        };
+        $scope.closeModal = function () {
+            $scope.modal.hide();
+        };
+
 })
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
@@ -48,20 +73,23 @@ angular.module('starter.controllers', [])
     dOther: false,
     missingUniform: false,
     missCleaning: false,
-    inside: '',
-    outside: '',
+    inside:3,
+    outside: 4,
     secondComment: ''
   };
 
-      $ionicModal.fromTemplateUrl('bdi-modal.html', {
-        scope: $scope,
-        animation: 'slide-in-up'
-      }).then(function(modal) {
-        $scope.modal = modal;
-      });
-      $scope.openModal = function() {
-        $scope.modal.show();
-      };
+  $ionicModal.fromTemplateUrl('templates/modal/bdi-modal.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
+  $scope.openModal = function() {
+    $scope.modal.show();
+  };
+  $scope.closeModal = function () {
+      $scope.modal.hide();
+  };
 
       console.table($scope.checklist);
 });

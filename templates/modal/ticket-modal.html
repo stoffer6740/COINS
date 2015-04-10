@@ -1,0 +1,112 @@
+<ion-modal-view>
+    <ion-header-bar>
+        <h1 class="title">Confirm data entered</h1>
+    </ion-header-bar>
+    <ion-content class="padding">
+        <ion-list>
+
+            <ion-item>
+                <label class="item-input item-text">
+                    <div class="input-label">
+                        Passenger name:
+                    </div>
+                    <input type="text" ng-model="ticketinspection.passName">
+                </label>
+            </ion-item>
+
+            <ion-item>
+                <label class="item-input item-text">
+                    <div class="input-label">
+                        Address:
+                    </div>
+                    <input type="text" ng-model="ticketinspection.passAddress">
+                </label>
+            </ion-item>
+
+            <ion-item>
+                <label class="item-input item-text">
+                    <div class="input-label">
+                        Zip Code:
+                    </div>
+                    <input type="text" ng-model="ticketinspection.passZip">
+                </label>
+            </ion-item>
+
+            <ion-item>
+                <label class="item-input item-text">
+                    <div class="input-label">
+                        City:
+                    </div>
+                    <input type="text" ng-model="ticketinspection.passCity">
+                </label>
+            </ion-item>
+
+            <ion-item>
+                <label class="item-input item-select">
+                    <div class="input-label">
+                        Passenger ID:
+                    </div>
+                    <select>
+                        <option ng-repeat="id in ticketinspection.passID">{{ id }}</option>
+                    </select>
+                </label>
+            </ion-item>
+
+            <ion-item>
+                <label class="item-input item-text">
+                    <div class="input-label">
+                        CPR:
+                    </div>
+                    <input type="text" ng-model="ticketinspection.passCPR">
+                </label>
+            </ion-item>
+
+            <ion-item>
+                <label class="item-input item-text">
+                    <div class="input-label">
+                        Phone no.:
+                    </div>
+                    <input type="text" ng-model="ticketinspection.passPhone">
+                </label>
+            </ion-item>
+
+            <ion-item>
+                <label class="item-input item-text">
+                    <div class="input-label">
+                        Email:
+                    </div>
+                    <input type="text" ng-model="ticketinspection.passEmail">
+                </label>
+            </ion-item>
+            <br>
+
+            <ion-item class="item-divider">
+                Invalid ticket kind
+            </ion-item>
+            <ion-toggle ng-model="ticketinspection.aSeasonPass">
+                A. Invalid season pass
+            </ion-toggle>
+            <ion-toggle ng-model="ticketinspection.bNoValidTicket">
+                B. No valid Ticket
+            </ion-toggle>
+            <ion-toggle ng-model="ticketinspection.cNoCheckIn">
+                C. Not checked in
+            </ion-toggle>
+            <br>
+
+            <ion-item>
+                <label class="item-input item-text">
+                    <div class="input-label">
+                        Additional comments:
+                    </div>
+                    <input type="text" ng-model="ticketinspection.passComments">
+                </label>
+            </ion-item>
+            <br>
+
+            <input type="button" ng-click="closeModal()" class="button button-balanced button-bar" value="Submit ticket">
+            <br>
+            <input type="button" ng-click="closeModal()" class="button button-assertive button-bar" value="Cancel submission">
+        </ion-list>
+    </ion-content>
+</ion-modal-view>

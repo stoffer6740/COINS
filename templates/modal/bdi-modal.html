@@ -1,0 +1,125 @@
+<ion-modal-view>
+    <ion-header-bar>
+        <h1 class="title">Confirm data entered</h1>
+    </ion-header-bar>
+    <ion-content class="padding">
+        <ion-list>
+            <ion-item>
+                <bdi-directive name="'Ticket system working'" data="checklist.ticketWorking"></bdi-directive>
+            </ion-item>
+            <div><br></div>
+            <ion-item  ng-model="checklist.smokeSmell">
+                Bus smells of smoke
+            </ion-item>
+            <ion-item  ng-model="checklist.driverSmoke">
+                Driver is smoking
+            </ion-item>
+            <ion-item  ng-model="checklist.passSmoke">
+                Passengers are smoking
+            </ion-item>
+            <div><br></div>
+            <ion-item  ng-model="checklist.missPass">
+                Driver misses passengers
+            </ion-item>
+              <span ng-show="checklist.missPass">
+                <ion-item  ng-model="checklist.aTooManyPass">
+                    A. Too many passengers
+                </ion-item>
+                <ion-item  ng-model="checklist.bCarelessDriver">
+                    B. Careless driver
+                </ion-item>
+              </span>
+            <div><br></div>
+
+            <ion-item  ng-model="checklist.incorrectTickets">
+                Issuing incorrect tickets
+            </ion-item>
+            <ion-item ng-show="checklist.incorrectTickets">
+                <input type="text" ng-model="checklist.firstComment" placeholder="Comment">
+            </ion-item>
+            <div></br></div>
+            <ion-item  ng-model="checklist.usingMobile">
+                Driver using mobile phone
+            </ion-item>
+            <br>
+            <ion-item  ng-model="checklist.missAnnouncement">
+                Driver misses announcement
+            </ion-item>
+            <div><br></div>
+            <ion-item class="item-divider">Availability of bus to passengers</ion-item>
+            <ion-item  ng-model="checklist.notAtLane">
+                A. Bus not at lane in time or
+            </ion-item>
+            <ion-item  ng-model="checklist.doorsClosed">
+                B. The doors are closed too long
+            </ion-item>
+            <ion-item  ng-model="checklist.other">
+                C. Other
+            </ion-item>
+            <br>
+            <ion-item  ng-model="checklist.missInfoMaterials">
+                Misses information materials
+            </ion-item>
+            <br>
+            <ion-item ng-model="checklist.missingPictograms">
+                Missing pictograms
+            </ion-item>
+              <span ng-show="checklist.missingPictograms">
+                <ion-item  ng-model="checklist.aNoSmoking">
+                    A. No smoking
+                </ion-item>
+                <ion-item  ng-model="checklist.bNoIceFood">
+                    B. No ice or food allowed
+                </ion-item>
+                <ion-item  ng-model="checklist.cDrinks">
+                    C. No drinks
+                </ion-item>
+                <ion-item  ng-model="checklist.dOther">
+                    D. Other
+                </ion-item>
+              </span>
+            <br>
+            <ion-item  ng-model="checklist.missingUniform">
+                Missing uniform
+            </ion-item>
+            <br>
+            <ion-item  ng-model="checklist.missCleaning">
+                Bus needs cleaning
+            </ion-item>
+
+            <ion-item class="item-divider">
+                Bus needs cleaning outside
+            </ion-item>
+            <ion-item>
+                <div class="range">
+                    <div>1</div>
+                    <input type="range" min="1" max="5" ng-model="checklist.cleanOutside" name="cleanOutside">
+                    <div>5</div>
+                </div>
+                <p style="float: left">Best</p>
+                <p style="float: right;">Worst</p>
+            </ion-item>
+            <ion-item class="item-divider">
+                Bus needs cleaning inside
+            </ion-item>
+            <ion-item>
+                <div class="range">
+                    <div>1</div>
+                    <input type="range" min="1" max="5" ng-model="checklist.cleanInside" name="cleanInside">
+                    <div>5</div>
+                </div>
+                <p style="float: left">Best</p>
+                <p style="float: right;">Worst</p>
+            </ion-item>
+
+            <ion-item>
+                <input type="text" ng-model="checklist.secondComment" placeholder="Comment">
+            </ion-item>
+
+            <br>
+        </ion-list>
+        <input type="button" ng-click="closeModal()" class="button button-balanced button-bar" value="Confirm and submit inspection">
+        <br>
+        <input type="button" ng-click="closeModal()" class="button button-assertive button-bar" value="Cancel submission">
+    </ion-content>
+</ion-modal-view>

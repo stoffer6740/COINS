@@ -12,16 +12,32 @@
             <span class="input-label">Departure time</span>
             <input type="time" ng-model="departureTime">
           </label>
-          <label class="item item-input">
-            <span class="input-label">End station</span>
-            <input type="text" ng-model="endStation">
-          </label>
+            <label class="item-input item-select">
+              <div class="input-label">
+                End station:
+              </div>
+              <select>
+                <option ng-repeat="station in endStation">{{ station }}</option>
+              </select>
+            </label>
           <input type="button" ng-click="submit()" style="text-align: center;" class="text-center button button-balanced button-bar" value="Choose line">
         </div>
       </div>
     </div>
 
-    {{ hidden }}
+    <div class="list card" >
+      <ion-list>
+        <ion-item class="item-divider">
+          Syncronize data
+        </ion-item>
+        <ion-item>
+          <input type="button" ng-click="submit()" style="text-align: center;" class="text-center button button-balanced button-bar" value="Sync data">
+        </ion-item>
+      </ion-list>
+    </div>
+
+
+
 
     <div class="list card" ng-show="state">
       <div class="item item-divider">Choose a line</div>

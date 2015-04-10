@@ -50,10 +50,10 @@
         <div class="item item-divider">Please login</div>
         <div class="item item-body">
             <div class="login-input">
-                <input type="text" placeholder="Username" ng-model="username">
+                <input type="text" placeholder="Username" ng-model="username" ng-trim="true">
                 <input type="password" placeholder="Password" ng-model="password">
                 <input type="button" ng-click="redirect()" style="text-align: center;" class="text-center button button-balanced button-bar" value="Log in">
-                <div class="error">{{error}}</div>
+                <div class="error">{{ error }}</div>
             </div>
         </div>
     </div>

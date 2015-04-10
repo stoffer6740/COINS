@@ -18,13 +18,16 @@
       <ion-toggle  ng-model="checklist.missPass">
         Driver misses passengers
       </ion-toggle>
-      <ion-toggle  ng-model="checklist.aTooManyPass">
-        A. Too many passengers
-      </ion-toggle>
-      <ion-toggle  ng-model="checklist.bCarelessDriver">
-        B. Careless driver
-      </ion-toggle>
+      <span>
+        <ion-toggle ng-disabled="!checklist.missPass"  ng-model="checklist.aTooManyPass">
+          A. Too many passengers
+        </ion-toggle>
+        <ion-toggle ng-disabled="!checklist.missPass" ng-model="checklist.bCarelessDriver">
+          B. Careless driver
+        </ion-toggle>
+      </span>
       <div><br></div>
+
       <ion-toggle  ng-model="checklist.incorrectTickets">
         Issuing incorrect tickets
       </ion-toggle>
@@ -35,11 +38,12 @@
       <ion-toggle  ng-model="checklist.usingMobile">
         Driver using mobile phone
       </ion-toggle>
+      <br>
       <ion-toggle  ng-model="checklist.missAnnouncement">
         Driver misses announcement
       </ion-toggle>
       <div><br></div>
-      <ion-item>Availability of bus to passengers</ion-item>
+      <ion-item class="item-divider">Availability of bus to passengers</ion-item>
       <ion-toggle  ng-model="checklist.notAtLane">
         A. Bus not at lane in time or
       </ion-toggle>
@@ -50,46 +54,60 @@
         C. Other
       </ion-toggle>
       <br>
-      <ion-toggle  ng-model="checklist.missingPictograms">
-        Misses information materials.
+      <ion-toggle  ng-model="checklist.missInfoMaterials">
+        Misses information materials
       </ion-toggle>
       <br>
-      <ion-item>Missing pictograms</ion-item>
-      <ion-toggle  ng-model="checklist.aNoSmoking">
-        A. No smoking
+      <ion-toggle ng-model="checklist.missingPictograms">
+        Missing pictograms
       </ion-toggle>
-      <ion-toggle  ng-model="checklist.bNoIceFood">
-        B. No ice or food allowed
-      </ion-toggle>
-      <ion-toggle  ng-model="checklist.cDrinks">
-        C. No drinks
-      </ion-toggle>
-      <ion-toggle  ng-model="checklist.dOther">
-        D. Other
-      </ion-toggle>
+      <span>
+        <ion-toggle ng-disabled="!checklist.missingPictograms"  ng-model="checklist.aNoSmoking">
+          A. No smoking
+        </ion-toggle>
+        <ion-toggle ng-disabled="!checklist.missingPictograms"  ng-model="checklist.bNoIceFood">
+          B. No ice or food allowed
+        </ion-toggle>
+        <ion-toggle ng-disabled="!checklist.missingPictograms"  ng-model="checklist.cDrinks">
+          C. No drinks
+        </ion-toggle>
+        <ion-toggle ng-disabled="!checklist.missingPictograms"  ng-model="checklist.dOther">
+          D. Other
+        </ion-toggle>
+      </span>
       <br>
       <ion-toggle  ng-model="checklist.missingUniform">
-        Missing uniform.
+        Missing uniform
       </ion-toggle>
+      <br>
       <ion-toggle  ng-model="checklist.missCleaning">
         Bus needs cleaning
       </ion-toggle>
-      <ion-item>
-        <div class="range">
-          <div>1</div>
-          <input type="range" ng-model="checklist.cleanOutside" name="cleanOutside">
-          <div>5</div>
-        </div>
-        {{ cleanOutside }}
+      <ion-item class="item-divider">
+        Bus needs cleaning outside
       </ion-item>
       <ion-item>
         <div class="range">
           <div>1</div>
-          <input type="range" ng-model="checklist.cleanInside" name="cleanInside">
+          <input type="range" min="1" max="5" ng-model="checklist.cleanOutside" name="cleanOutside">
           <div>5</div>
         </div>
-        {{ cleanInside }}
+        <p style="float: left">Best</p>
+        <p style="float: right;">Worst</p>
       </ion-item>
+      <ion-item class="item-divider">
+        Bus needs cleaning inside
+      </ion-item>
+      <ion-item>
+        <div class="range">
+          <div>1</div>
+          <input type="range" min="1" max="5" ng-model="checklist.cleanInside" name="cleanInside">
+          <div>5</div>
+        </div>
+        <p style="float: left">Best</p>
+        <p style="float: right;">Worst</p>
+      </ion-item>
+
       <ion-item>
         <input type="text" ng-model="checklist.secondComment" placeholder="Comment">
       </ion-item>
@@ -97,22 +115,6 @@
       <br>
       <input type="button" ng-click="openModal()" class="button button-balanced button-bar" value="Submit inspection">
     </ion-list>
-
-    <script id="bdi-modal.html" type="text/ng-template">
-      <ion-modal-view>
-        <ion-header-bar>
-          <h1 class="title">Confirm data entered</h1>
-        </ion-header-bar>
-        <ion-content>
-          <p>Ticket working: {{ checklist.ticketWorking}}</p>
-          <p ng-repeat="item in checklist">
-            {{ item }}
-          </p>
-          <input type="button" ng-click="openModal()" class="button button-balanced button-bar" value="Confirm and submit inspection">
-        </ion-content>
-      </ion-modal-view>
-    </script>
-
 
   </ion-content>
 </ion-view>
