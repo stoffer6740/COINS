@@ -1,0 +1,47 @@
+<ion-view view-title="Dashboard">
+  <ion-content class="padding">
+    <div class="list card" ng-hide="state">
+      <div class="item item-divider">Choose a line</div>
+      <div class="item item-body input-fields">
+        <div>
+          <label class="item item-input">
+            <span class="input-label">Line number</span>
+            <input type="number" ng-model="lineNumber">
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Departure time</span>
+            <input type="time" ng-model="departureTime">
+          </label>
+          <label class="item item-input">
+            <span class="input-label">End station</span>
+            <input type="text" ng-model="endStation">
+          </label>
+          <input type="button" ng-click="submit()" style="text-align: center;" class="text-center button button-balanced button-bar" value="Choose line">
+        </div>
+      </div>
+    </div>
+
+    {{ hidden }}
+
+    <div class="list card" ng-show="state">
+      <div class="item item-divider">Choose a line</div>
+      <div class="item item-body input-fields">
+        <div>
+          <label class="item item-input">
+            <span class="input-label">Line number</span>
+            {{ lineNumber }}
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Departure time</span>
+            {{ departureTime }}
+          </label>
+          <label class="item item-input">
+            <span class="input-label">End station</span>
+            {{ endStation }}
+          </label>
+          <!--<input type="button" ng-click="redirect()" style="text-align: center;" class="text-center button button-balanced button-bar" value="Choose line">-->
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

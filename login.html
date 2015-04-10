@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>Login</title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet"/>
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <script>
+        angular.module('coins.login', ['ionic'])
+            .run(function($ionicPlatform) {
+                $ionicPlatform.ready(function () {
+                    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+                    // for form inputs)
+                    if (window.cordova && window.cordova.plugins.Keyboard) {
+                        cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+                    }
+                    if (window.StatusBar) {
+                        // org.apache.cordova.statusbar required
+                        StatusBar.styleDefault();
+                    }
+                })
+            })
+
+            .controller('LoginCtrl', function ($scope) {
+                $scope.redirect = function () {
+                    if(!$scope.username || !$scope.password) {
+                        $scope.error = 'Please input username and password.';
+                    }
+                    else if ($scope.username == 'admin' && $scope.password == 'admin'){
+                        window.location.href = 'index.html';
+                    }
+                    else if(!$scope.username == 'admin' && !$scope.password == 'admin'){
+                        $scope.error = 'Wrong username or password';
+                    }
+                }
+            });
+
+    </script>
+
+</head>
+<body ng-app="coins.login">
+
+
+<ion-content class="padding" ng-controller="LoginCtrl">
+    <div class="list card">
+        <div class="item item-divider">Please login</div>
+        <div class="item item-body">
+            <div class="login-input">
+                <input type="text" placeholder="Username" ng-model="username">
+                <input type="password" placeholder="Password" ng-model="password">
+                <input type="button" ng-click="redirect()" style="text-align: center;" class="text-center button button-balanced button-bar" value="Log in">
+                <div class="error">{{error}}</div>
+            </div>
+        </div>
+    </div>
+</ion-content>
+</body>
+</html>
